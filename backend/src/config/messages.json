@@ -1,0 +1,7 @@
+{
+  "response.json_ok": "Successful request.",
+  "response.json_bad_request": "Bad request.",
+  "response.json_unauthorized": "Unauthorized.",
+  "response.json_not_found": "Not found.",
+  "response.json_server_error": "Server error."
+}
