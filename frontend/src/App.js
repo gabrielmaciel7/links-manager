@@ -1,6 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
+import ManageLinks from "./screens/Manage/Links";
+import ManageLinksCreate from "./screens/Manage/Links/Create";
+import ManageLinksEdit from "./screens/Manage/Links/Edit";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -16,13 +20,13 @@ const App = () => {
         </nav>
         <Switch>
           <Route path="/manage/links/create">
-            <h1>Create link</h1>
+            <ManageLinksCreate />
           </Route>
           <Route path="/manage/links/edit">
-            <h1>Edit link</h1>
+            <ManageLinksEdit />
           </Route>
           <Route path="/manage/links">
-            <h1>Links</h1>
+            <ManageLinks />
           </Route>
           <Route path="/">
             <h1>Home</h1>
