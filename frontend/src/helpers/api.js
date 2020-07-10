@@ -8,6 +8,16 @@ export const getHeaders = () => {
   return {};
 };
 
+export const apiGet = (path) => {
+  const url = getApiUrl(path);
+
+  const options = {
+    headers: getHeaders(),
+  };
+
+  return axios.get(url, options);
+};
+
 export const apiPost = (path, data = {}) => {
   const url = getApiUrl(path);
 
