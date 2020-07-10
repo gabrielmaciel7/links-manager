@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const requireDir = require("require-dir");
 
 const response = require("./middlewares/response");
 
 const app = express();
 
+app.use(cors());
 app.use(response);
 
 app.use(express.json());
@@ -20,6 +22,6 @@ requireDir("./models");
 
 app.use("/", require("./routes"));
 
-app.listen(3002, () => {
-  console.log("Starting api...");
+app.listen(3001, () => {
+  console.log("Starting api on port 3001");
 });
