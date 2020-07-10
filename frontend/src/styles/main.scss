@@ -3,5 +3,14 @@
 }
 
 .link-delete {
-  border: 1px solid red;
+  border: 1px solid rgb(226, 48, 48);
+}
+
+.modal-alert {
+  background-color: rgb(226, 48, 48);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
 }

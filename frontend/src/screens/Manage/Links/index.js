@@ -3,12 +3,22 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Layout from "../../Layouts/Manage";
-import { linkList, setLinkToRemove } from "../../../actions/LinkActions";
+import { linkList, setLinkToRemove, linkRemove } from "../../../actions/LinkActions";
 
-const Links = ({ links, linkToRemove, linkList, setLinkToRemove }) => {
+const Links = ({
+  links,
+  linkRemove,
+  linkToRemove,
+  linkList,
+  setLinkToRemove,
+}) => {
   useEffect(() => {
     linkList();
   }, [linkList]);
+
+  const cancelDelete = (e) => setLinkToRemove(null);
+
+  const confirmDelete = (e) => (linkToRemove ? linkRemove(linkToRemove) : null);
 
   return (
     <Layout>
@@ -53,6 +63,21 @@ const Links = ({ links, linkToRemove, linkList, setLinkToRemove }) => {
               );
             })
           : null}
+
+        {linkToRemove ? (
+          <div className="modal-alert">
+            <h4>Delete confirmation</h4>
+            <p>
+              Are you sure you want to delete?
+              <br />
+              This action cannot be undone.
+            </p>
+            <div>
+              <button onClick={cancelDelete}>Cancel</button>
+              <button onClick={confirmDelete}>Delete</button>
+            </div>
+          </div>
+        ) : null}
       </div>
     </Layout>
   );
@@ -65,4 +90,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { linkList, setLinkToRemove })(Links);
+export default connect(mapStateToProps, { linkList, setLinkToRemove, linkRemove })(Links);
