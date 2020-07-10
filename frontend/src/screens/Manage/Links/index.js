@@ -25,7 +25,7 @@ const Links = ({ links, linkList }) => {
         {links && links.length
           ? links.map((link) => {
               return (
-                <div>
+                <div key={link._id}>
                   <div>
                     <img
                       src="https://via.placeholder.com/100"
@@ -37,7 +37,7 @@ const Links = ({ links, linkList }) => {
                     <span>{link.url}</span>
                   </div>
                   <div>
-                    <span>Edit</span>
+                    <Link to={`/manage/links/edit/${link._id}`}>Edit</Link>
                     <span>Delete</span>
                   </div>
                 </div>
