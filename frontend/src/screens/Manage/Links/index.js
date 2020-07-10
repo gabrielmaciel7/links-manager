@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Layout from "../../Layouts/Manage";
-import { linkList } from "../../../actions/LinkActions";
+import { linkList, setLinkToRemove } from "../../../actions/LinkActions";
 
-const Links = ({ links, linkList }) => {
+const Links = ({ links, linkToRemove, linkList, setLinkToRemove }) => {
   useEffect(() => {
     linkList();
   }, [linkList]);
@@ -24,8 +24,17 @@ const Links = ({ links, linkList }) => {
 
         {links && links.length
           ? links.map((link) => {
+              const deleteClick = (e) => {
+                setLinkToRemove(link);
+              };
+
+              const border =
+                linkToRemove && linkToRemove._id === link._id
+                  ? "link-delete"
+                  : "link-normal";
+
               return (
-                <div key={link._id}>
+                <div key={link._id} className={border}>
                   <div>
                     <img
                       src="https://via.placeholder.com/100"
@@ -38,7 +47,7 @@ const Links = ({ links, linkList }) => {
                   </div>
                   <div>
                     <Link to={`/manage/links/edit/${link._id}`}>Edit</Link>
-                    <span>Delete</span>
+                    <button onClick={deleteClick}>Delete</button>
                   </div>
                 </div>
               );
@@ -50,7 +59,10 @@ const Links = ({ links, linkList }) => {
 };
 
 const mapStateToProps = (state) => {
-  return { links: state.link.links };
+  return {
+    links: state.link.links,
+    linkToRemove: state.link.linkToRemove,
+  };
 };
 
-export default connect(mapStateToProps, { linkList })(Links);
+export default connect(mapStateToProps, { linkList, setLinkToRemove })(Links);
