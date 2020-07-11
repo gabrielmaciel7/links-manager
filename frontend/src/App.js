@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import ManageLinks from "./screens/Manage/Links";
 import ManageLinksCreate from "./screens/Manage/Links/Create";
@@ -9,15 +9,6 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/manage/links/create">Create link</Link>
-              <Link to="/manage/links/edit">Edit link</Link>
-              <Link to="/manage/links">Links</Link>
-            </li>
-          </ul>
-        </nav>
         <Switch>
           <Route path="/manage/links/create">
             <ManageLinksCreate />

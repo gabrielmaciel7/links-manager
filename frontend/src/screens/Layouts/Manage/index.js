@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Layout = ({ children }) => {
   return (
@@ -6,13 +7,10 @@ const Layout = ({ children }) => {
       <nav className="navbar">
         <div className="container">
           <div>
-            <span>Back</span>
+            <NavLink to="/manage/links">Back</NavLink>
           </div>
           <div>
             <strong>Links</strong>
-          </div>
-          <div>
-            <span>Exit</span>
           </div>
         </div>
       </nav>
