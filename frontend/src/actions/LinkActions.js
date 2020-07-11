@@ -6,6 +6,7 @@ export const LINK_CREATE = "LINK_CREATE";
 export const LINK_UPDATE = "LINK_UPDATE";
 export const LINK_TO_REMOVE = "LINK_TO_REMOVE";
 export const LINK_REMOVE = "LINK_REMOVE";
+export const LINK_CLEAR = "LINK_CLEAR";
 
 export const linkList = (data) => {
   const payload = apiGet("/link");
@@ -42,3 +43,7 @@ export const linkRemove = (link) => {
 
   return { type: LINK_REMOVE, payload };
 };
+
+export const linkClear = () => {
+  return {type: LINK_CLEAR, payload: {}}
+}
