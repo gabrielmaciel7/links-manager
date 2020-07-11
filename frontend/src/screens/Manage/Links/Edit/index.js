@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Layout from "../../../Layouts/Manage";
@@ -15,6 +15,7 @@ import { getFormData } from "../../../../helpers/form";
 
 const Edit = ({ link, linkGet, linkUpdate, linkClear }) => {
   const { id } = useParams();
+  const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     linkGet(id);
@@ -28,7 +29,11 @@ const Edit = ({ link, linkGet, linkUpdate, linkClear }) => {
     const data = getFormData(e);
 
     linkUpdate(id, data);
+
+    setSubmit(true);
   };
+
+  if (submit) return <Redirect to="/manage/links" />;
 
   return (
     <Layout>
